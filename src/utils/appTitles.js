@@ -1,0 +1,36 @@
+const titleMap = {
+    "/": "Dashboard",
+    "/dashboard": "Dashboard",
+    "/signin": "Sign In",
+    "/signup": "Sign Up",
+    "/profile": "User Profile",
+    "/saved": "Saved Posts",
+    "/edit-profile": "Edit Profile",
+    "/login-verified": "Login Verified",
+  };
+  /**
+   * Returns the title of a page based on its route path.
+   * @param {string} path - The path of the page route.
+   * @returns {string} The title of the page with the site name appended.
+   */
+  export const getTitleFromRoute = (path) => {
+    if (titleMap[path]) {
+      return `${titleMap[path]} | eMSC`;
+    }
+  
+    const userProfileRegex = /^\/user\/(\w+)$/;
+    const postRegex = /^\/(my\/)?post\/(\w+)$/;
+    const communityRegex =
+      /^\/community\/(\w+)(\/report|\/reported-post|\/moderator)?$/;
+  
+    if (userProfileRegex.test(path)) {
+      return "User Profile | eMSC";
+    } else if (postRegex.test(path)) {
+      return "Post | eMSC";
+    } else if (communityRegex.test(path)) {
+      return "Community | eMSC";
+    }
+  
+    return "eMSC";
+  };
+  
