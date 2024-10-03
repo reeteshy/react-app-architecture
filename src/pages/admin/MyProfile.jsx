@@ -26,105 +26,105 @@ function MyProfile() {
                     </section>
 
 
-                    <section class="content">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-3">
+                    <section className="content">
+                        <div className="container-fluid">
+                            <div className="row">
+                                <div className="col-md-3">
 
 
-                                    <div class="card card-primary card-outline">
-                                        <div class="card-body box-profile">
-                                            <div class="text-center">
-                                                <img class="profile-user-img img-fluid img-circle /"
+                                    <div className="card card-primary card-outline">
+                                        <div className="card-body box-profile">
+                                            <div className="text-center">
+                                                <img className="profile-user-img img-fluid img-circle /"
                                                     src={profileImage}
                                                     alt="User profile picture" />
                                             </div>
-                                            <strong><i class="fas fa-book mr-1"></i> Education</strong>
+                                            <strong><i className="fas fa-book mr-1"></i> Education</strong>
 
-                                            <p class="text-muted">
+                                            <p className="text-muted">
                                                 B.S. in Computer Science from the University of Tennessee at Knoxville
                                             </p>
 
                                             <hr />
 
-                                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                                            <strong><i className="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
-                                            <p class="text-muted">Malibu, California</p>
+                                            <p className="text-muted">Malibu, California</p>
 
                                             <hr />
 
-                                            <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+                                            <strong><i className="fas fa-pencil-alt mr-1"></i> Skills</strong>
 
-                                            <p class="text-muted">
-                                                <span class="tag tag-danger">UI Design</span>
-                                                <span class="tag tag-success">Coding</span>
-                                                <span class="tag tag-info">Javascript</span>
-                                                <span class="tag tag-warning">PHP</span>
-                                                <span class="tag tag-primary">Node.js</span>
+                                            <p className="text-muted">
+                                                <span className="tag tag-danger">UI Design</span>
+                                                <span className="tag tag-success">Coding</span>
+                                                <span className="tag tag-info">Javascript</span>
+                                                <span className="tag tag-warning">PHP</span>
+                                                <span className="tag tag-primary">Node.js</span>
                                             </p>
 
                                             <hr />
 
-                                            <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+                                            <strong><i className="far fa-file-alt mr-1"></i> Notes</strong>
 
-                                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                                            <p className="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
                                         </div>
 
                                     </div>
 
                                 </div>
 
-                                <div class="col-md-9">
+                                <div className="col-md-9">
 
-                                    <div class="card card-primary">
-                                        <div class="card-header">
-                                            <h3 class="card-title">About Me</h3>
+                                    <div className="card card-primary">
+                                        <div className="card-header">
+                                            <h3 className="card-title">About Me</h3>
                                         </div>
-                                        <div class="card-body">
-                                            <div class="tab-pane" id="settings">
-                                                <form class="form-horizontal">
+                                        <div className="card-body">
+                                            <div className="tab-pane" id="settings">
+                                                <form className="form-horizontal">
                                                     <div className='row'>
 
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group ">
-                                                                <label for="inputName">Name</label>
-                                                                <input type="email" class="form-control" id="inputName" placeholder="Name" />
+                                                        <div className="col-sm-6">
+                                                            <div className="form-group ">
+                                                                <label htmlFor="inputName">Name</label>
+                                                                <input type="email" className="form-control" id="inputName" placeholder="Name" />
                                                             </div>
                                                         </div>
 
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group ">
-                                                            <label for="inputEmail">Email</label>
-                                                            <input type="email" class="form-control" id="inputEmail" placeholder="Email" />
+                                                    <div className="col-sm-6">
+                                                        <div className="form-group ">
+                                                            <label htmlFor="inputEmail">Email</label>
+                                                            <input type="email" className="form-control" id="inputEmail" placeholder="Email" />
                                                         </div>
                                                     </div>
                                                     </div>
                                                     <div className='row'>
 
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group ">
-                                                            <label for="inputName2">Name</label>
-                                                            <input type="text" class="form-control" id="inputName2" placeholder="Name" />
+                                                    <div className="col-sm-6">
+                                                        <div className="form-group ">
+                                                            <label htmlFor="inputName2">Name</label>
+                                                            <input type="text" className="form-control" id="inputName2" placeholder="Name" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group ">
-                                                            <label for="inputSkills">Skills</label>
-                                                                <input type="text" class="form-control" id="inputSkills" placeholder="Skills" />
+                                                    <div className="col-sm-6">
+                                                        <div className="form-group ">
+                                                            <label htmlFor="inputSkills">Skills</label>
+                                                                <input type="text" className="form-control" id="inputSkills" placeholder="Skills" />
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-sm-6">
+                                                    <div className="col-sm-6">
                                                         
-                                                    <div class="form-group ">
-                                                            <label for="inputExperience">Experience</label>
-                                                            <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                                                    <div className="form-group ">
+                                                            <label htmlFor="inputExperience">Experience</label>
+                                                            <textarea className="form-control" id="inputExperience" placeholder="Experience"></textarea>
                                                         </div>
                                                     </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                            <button type="submit" class="btn btn-danger">Update Profile</button>
+                                                    <div className="form-group">
+                                                            <button type="submit" className="btn btn-danger">Update Profile</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -132,34 +132,34 @@ function MyProfile() {
                                         </div>
                                     </div>
 
-                                    <div class="card card-primary">
-                                        <div class="card-header">
-                                            <h3 class="card-title">Change Password</h3>
+                                    <div className="card card-primary">
+                                        <div className="card-header">
+                                            <h3 className="card-title">Change Password</h3>
                                         </div>
-                                        <div class="card-body">
-                                            <div class="tab-pane" id="settings">
-                                                <form class="form-horizontal">
+                                        <div className="card-body">
+                                            <div className="tab-pane" id="settings">
+                                                <form className="form-horizontal">
                                                     <div className='row'>
-                                                        <div class="col-sm-4">
-                                                            <div class="form-group">
-                                                                <label for="inputName" >Current Password</label>
-                                                                <input type="password" class="form-control" id="inputName" placeholder="Current Password" />
+                                                        <div className="col-sm-4">
+                                                            <div className="form-group">
+                                                                <label htmlFor="inputName" >Current Password</label>
+                                                                <input type="password" className="form-control" id="inputName" placeholder="Current Password" />
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-4">
-                                                            <div class="form-group">
-                                                                <label for="inputName">New Password</label>
-                                                                <input type="password" class="form-control" id="inputName" placeholder="New Password" />
+                                                        <div className="col-sm-4">
+                                                            <div className="form-group">
+                                                                <label htmlFor="inputName">New Password</label>
+                                                                <input type="password" className="form-control" id="inputName" placeholder="New Password" />
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-4">
-                                                            <div class="form-group">
-                                                                <label for="inputName">Confirm New Password</label>
-                                                                <input type="password" class="form-control" id="inputName" placeholder="Confirm New Password" />
+                                                        <div className="col-sm-4">
+                                                            <div className="form-group">
+                                                                <label htmlFor="inputName">Confirm New Password</label>
+                                                                <input type="password" className="form-control" id="inputName" placeholder="Confirm New Password" />
                                                             </div>
                                                         </div>
-                                                        <div class="form-group ">
-                                                                <button type="submit" class="btn btn-danger">Change Password</button>
+                                                        <div className="form-group ">
+                                                                <button type="submit" className="btn btn-danger">Change Password</button>
                                                         </div>
                                                     </div>
                                                 </form>

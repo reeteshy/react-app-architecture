@@ -1,15 +1,18 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCog, faRightFromBracket, faSearch, faTimes, faUser } from "@fortawesome/free-solid-svg-icons";
 
 
 import { MainContext } from "../../../utils/MainContextProvider";
 
 function TopHeader() {
-  const [toogle, setToggle] = useState(true)
 
-  const { menuHamburger, handleSideMenuToggle } = useContext(MainContext);
+  const { status, handleSideMenuToggle } = useContext(MainContext);
+  const [toggleSearch, setToggleSearch] = useState('navbar-search-block')
+  const [toggleDropdown, setToggleDropdown] = useState(false)
+
+  const profileSettingDropdown = toggleDropdown ? 'show' : null;
 
 
   return (
@@ -17,7 +20,7 @@ function TopHeader() {
       <nav className="main-header navbar navbar-expand navbar-white navbar-light">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link className="nav-link" data-widget="pushmenu" href="#" role="button" onClick={()=>handleSideMenuToggle(!menuHamburger)}>
+            <Link className="nav-link" onClick={() => handleSideMenuToggle(!status)}>
               <FontAwesomeIcon icon={faBars} />
             </Link>
           </li>
@@ -37,13 +40,12 @@ function TopHeader() {
           <li className="nav-item">
             <Link
               className="nav-link"
-              data-widget="navbar-search"
-              href="#"
               role="button"
+              onClick={() => setToggleSearch('navbar-search-block navbar-search-open')}
             >
-              <i className="fas fa-search"></i>
+              <FontAwesomeIcon icon={faSearch} />
             </Link>
-            <div className="navbar-search-block">
+            <div className={toggleSearch}>
               <form className="form-inline">
                 <div className="input-group input-group-sm">
                   <input
@@ -54,144 +56,30 @@ function TopHeader() {
                   />
                   <div className="input-group-append">
                     <button className="btn btn-navbar" type="submit">
-                      <i className="fas fa-search"></i>
+                      <FontAwesomeIcon icon={faSearch} />
                     </button>
                     <button
                       className="btn btn-navbar"
                       type="button"
-                      data-widget="navbar-search"
+                      onClick={() => setToggleSearch('navbar-search-block')}
                     >
-                      <i className="fas fa-times"></i>
+                      <FontAwesomeIcon icon={faTimes} />
                     </button>
                   </div>
                 </div>
               </form>
             </div>
           </li>
-
-          <li className="nav-item dropdown">
-            <Link className="nav-link" data-toggle="dropdown" href="#">
-              <i className="far fa-comments"></i>
-              <span className="badge badge-danger navbar-badge">3</span>
-            </Link>
-            <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              <Link to="#" className="dropdown-item">
-                <div className="media">
-                  <img
-                    src="dist/img/user1-128x128.jpg"
-                    alt="User Avatar"
-                    className="img-size-50 mr-3 img-circle"
-                  />
-                  <div className="media-body">
-                    <h3 className="dropdown-item-title">
-                      Brad Diesel
-                      <span className="float-right text-sm text-danger">
-                        <i className="fas fa-star"></i>
-                      </span>
-                    </h3>
-                    <p className="text-sm">Call me whenever you can...</p>
-                    <p className="text-sm text-muted">
-                      <i className="far fa-clock mr-1"></i> 4 Hours Ago
-                    </p>
-                  </div>
-                </div>
-              </Link>
-              <div className="dropdown-divider"></div>
-              <Link to="#" className="dropdown-item">
-                <div className="media">
-                  <img
-                    src="dist/img/user8-128x128.jpg"
-                    alt="User Avatar"
-                    className="img-size-50 img-circle mr-3"
-                  />
-                  <div className="media-body">
-                    <h3 className="dropdown-item-title">
-                      John Pierce
-                      <span className="float-right text-sm text-muted">
-                        <i className="fas fa-star"></i>
-                      </span>
-                    </h3>
-                    <p className="text-sm">I got your message bro</p>
-                    <p className="text-sm text-muted">
-                      <i className="far fa-clock mr-1"></i> 4 Hours Ago
-                    </p>
-                  </div>
-                </div>
-              </Link>
-              <div className="dropdown-divider"></div>
-              <Link to="#" className="dropdown-item">
-                <div className="media">
-                  <img
-                    src="dist/img/user3-128x128.jpg"
-                    alt="User Avatar"
-                    className="img-size-50 img-circle mr-3"
-                  />
-                  <div className="media-body">
-                    <h3 className="dropdown-item-title">
-                      Nora Silvester
-                      <span className="float-right text-sm text-warning">
-                        <i className="fas fa-star"></i>
-                      </span>
-                    </h3>
-                    <p className="text-sm">The subject goes here</p>
-                    <p className="text-sm text-muted">
-                      <i className="far fa-clock mr-1"></i> 4 Hours Ago
-                    </p>
-                  </div>
-                </div>
-              </Link>
-              <div className="dropdown-divider"></div>
-              <Link to="#" className="dropdown-item dropdown-footer">
-                See All Messages
-              </Link>
-            </div>
-          </li>
-
-          <li className="nav-item dropdown">
-            <Link className="nav-link" data-toggle="dropdown" href="#">
-              <i className="far fa-bell"></i>
-              <span className="badge badge-warning navbar-badge">15</span>
-            </Link>
-            <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              <span className="dropdown-item dropdown-header">
-                15 Notifications
-              </span>
-              <div className="dropdown-divider"></div>
-              <Link to="#" className="dropdown-item">
-                <i className="fas fa-envelope mr-2"></i> 4 new messages
-                <span className="float-right text-muted text-sm">3 mins</span>
-              </Link>
-              <div className="dropdown-divider"></div>
-              <Link to="#" className="dropdown-item">
-                <i className="fas fa-users mr-2"></i> 8 friend requests
-                <span className="float-right text-muted text-sm">12 hours</span>
-              </Link>
-              <div className="dropdown-divider"></div>
-              <Link to="#" className="dropdown-item">
-                <i className="fas fa-file mr-2"></i> 3 new reports
-                <span className="float-right text-muted text-sm">2 days</span>
-              </Link>
-              <div className="dropdown-divider"></div>
-              <Link to="#" className="dropdown-item dropdown-footer">
-                See All Notifications
-              </Link>
-            </div>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" data-widget="fullscreen" href="#" role="button">
-              <i className="fas fa-expand-arrows-alt"></i>
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              className="nav-link"
-              data-widget="control-sidebar"
-              data-slide="true"
-              href="#"
-              role="button"
-            >
-              <i className="fas fa-th-large"></i>
-            </Link>
+            <li className="nav-item dropdown show">
+              <a className="nav-link dropdown-toggle" onClick={() => setToggleDropdown(!toggleDropdown)} >My Profile</a>
+              <ul class={`dropdown-menu border-0 shadow ${profileSettingDropdown}`} >
+                <li><a className="dropdown-item"> <Link className="nav-link btn-m-5">
+                  Settings <FontAwesomeIcon icon={faCog} />
+                </Link> </a></li>
+                <li><a className="dropdown-item"> <Link className="nav-link btn-m-5">
+                  Logout <FontAwesomeIcon icon={faRightFromBracket} />
+                </Link></a></li>
+              </ul>
           </li>
         </ul>
       </nav>

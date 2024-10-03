@@ -1,12 +1,15 @@
 const titleMap = {
-    "/": "Dashboard",
+    "/": "Sign In",
     "/dashboard": "Dashboard",
-    "/signin": "Sign In",
-    "/signup": "Sign Up",
-    "/profile": "User Profile",
-    "/saved": "Saved Posts",
-    "/edit-profile": "Edit Profile",
-    "/login-verified": "Login Verified",
+    "/sign-in": "Sign In",
+    "/sign-up": "Sign Up",
+    "/my-profile": "User Profile",
+    "/regulater": "Regulater",
+    "/operater": "Operater",
+    "/sub-admin": "Sub Admin",
+    "/users": "Users",
+    "/forget-password": "Forget Password",
+    "/recover-password": "Recover Password",
   };
   /**
    * Returns the title of a page based on its route path.

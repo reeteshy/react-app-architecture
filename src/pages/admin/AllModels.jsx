@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Layout from "./layouts/Layout";
 import ShowModel from "./components/ShowModel";
+import {MainContext} from '../../utils/MainContextProvider'
 
 function AllModels() {
-  const [show, setShow] = useState(false);
-  const [showModelClass, setShowModelClass] = useState("");
-  const handleShow = () => {
-    const newElement = document.createElement("div");
-    newElement.className = "modal-backdrop fade show";
-    newElement.className = "modal-backdrop fade show";
-    document.body.appendChild(newElement);
-    setShowModelClass("show");
-    setShow(true);
-  };
+
+  const { toggleModel, handleToggleModel} = useContext(MainContext);
+  const [modelById, setModelById] = useState('')
+
+  const handleManualModel = (showModelId) => {
+    setModelById(showModelId)
+    handleToggleModel()
+  }
+
 
   return (
     <>
@@ -54,9 +54,20 @@ function AllModels() {
                       <button
                         type="button"
                         className="btn btn-default"
-                        onClick={handleShow}
+                        id="model1"
+                        onClick={()=>handleManualModel('model1' )}
                       >
-                        Launch Default Modal
+                        Launch First Default Modal
+                      </button>
+                    </div>
+                    <div className="card-body">
+                      <button
+                        type="button"
+                        className="btn btn-default"
+                        id="model2"
+                        onClick={()=>handleManualModel('model2')}
+                      >
+                        Launch Second Default Modal
                       </button>
                     </div>
                   </div>
@@ -64,8 +75,23 @@ function AllModels() {
               </div>
             </div>
 
-            <ShowModel show={show} title={'new Form'}>
+            <ShowModel 
+            toggleModel={toggleModel} 
+            modelId={'model1'} 
+            modelById={modelById} 
+            title={'First Form'} 
+            handleToggleModel={handleToggleModel}
+            >
                 <h1>Hello One</h1>
+            </ShowModel>
+            <ShowModel 
+            toggleModel={toggleModel} 
+            modelId={'model2'} 
+            modelById={modelById} 
+            title={'Second Form'} 
+            handleToggleModel={handleToggleModel}
+            >
+                <h1>Hello Launch Second Default Modal</h1>
             </ShowModel>
           </section>
         </div>

@@ -5,31 +5,31 @@ function ServerError() {
   return (
     <>
       <Layout>
-        <section class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
+        <section className="content-header">
+          <div className="container-fluid">
+            <div className="row mb-2">
+              <div className="col-sm-6">
                 <h1>500 Error Page</h1>
               </div>
-              <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item">
+              <div className="col-sm-6">
+                <ol className="breadcrumb float-sm-right">
+                  <li className="breadcrumb-item">
                     <a href="#">Home</a>
                   </li>
-                  <li class="breadcrumb-item active">500 Error Page</li>
+                  <li className="breadcrumb-item active">500 Error Page</li>
                 </ol>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="content">
-          <div class="error-page">
-            <h2 class="headline text-danger">500</h2>
+        <section className="content">
+          <div className="error-page">
+            <h2 className="headline text-danger">500</h2>
 
-            <div class="error-content">
+            <div className="error-content">
               <h3>
-                <i class="fas fa-exclamation-triangle text-danger"></i> Oops!
+                <i className="fas fa-exclamation-triangle text-danger"></i> Oops!
                 Something went wrong.
               </h3>
 
@@ -39,18 +39,18 @@ function ServerError() {
                 the search form.
               </p>
 
-              <form class="search-form">
-                <div class="input-group">
+              <form className="search-form">
+                <div className="input-group">
                   <input
                     type="text"
                     name="search"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Search"
                   />
 
-                  <div class="input-group-append">
-                    <button type="submit" name="submit" class="btn btn-danger">
-                      <i class="fas fa-search"></i>
+                  <div className="input-group-append">
+                    <button type="submit" name="submit" className="btn btn-danger">
+                      <i className="fas fa-search"></i>
                     </button>
                   </div>
                 </div>

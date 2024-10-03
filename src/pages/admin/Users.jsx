@@ -1,12 +1,11 @@
 import React from 'react'
-import DataTable from './components/DataTable'
 import Layout from './layouts/Layout'
+import DataTable from './components/DataTable'
 
 function Users() {
   return (
     <>
     <Layout >
-
       <DataTable />
     </Layout>
     </>

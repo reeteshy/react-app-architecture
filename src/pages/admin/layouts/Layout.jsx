@@ -4,19 +4,20 @@ import AsideBar from './AsideBar'
 import Footer from './Footer'
 import { MainContext } from '../../../utils/MainContextProvider';
 
-function Layout({children}) {
+function Layout({ children }) {
 
-  const { menuHamburger } = useContext(MainContext);
+  const { toggleClass } = useContext(MainContext);
+
   return (
     <>
-        <div className={`hold-transition layout-fixed sidebar-collapse sidebar-mini ${menuHamburger} `} >
+      <div className={`hold-transition layout-fixed sidebar-mini ${toggleClass}`} >
         <div className="wrapper">
-            <TopHeader />
-            <AsideBar />
+          <TopHeader />
+          <AsideBar />
             {children}
-            <Footer />
-  </div>
-  </div>
+          <Footer />
+        </div>
+      </div>
     </>
   )
 }

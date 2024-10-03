@@ -11,6 +11,7 @@ import {
   faThumbsUp,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
+import AnalyticCard from "./components/AnalyticCard";
 
 function Dashboard() {
   return (
@@ -39,20 +40,7 @@ function Dashboard() {
             <div className="container-fluid">
               <div className="row">
                 <div className="col-lg-3 col-6">
-                  <div className="small-box bg-info">
-                    <div className="inner">
-                      <h3>150</h3>
-
-                      <p>New Orders</p>
-                    </div>
-                    <div className="icon">
-                      <FontAwesomeIcon icon={faCartFlatbedSuitcase} />
-                    </div>
-                    <Link to="#" className="small-box-footer">
-                      More info
-                      <FontAwesomeIcon icon={faArrowCircleRight} />
-                    </Link>
-                  </div>
+                  <AnalyticCard />
                 </div>
 
                 <div className="col-lg-3 col-6">
@@ -107,16 +95,16 @@ function Dashboard() {
                 </div>
               </div>
 
-              <div class="row">
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box">
-                    <span class="info-box-icon bg-info elevation-1">
+              <div className="row">
+                <div className="col-12 col-sm-6 col-md-3">
+                  <div className="info-box">
+                    <span className="info-box-icon bg-info elevation-1">
                       <FontAwesomeIcon icon={faCog} />
                     </span>
 
-                    <div class="info-box-content">
-                      <span class="info-box-text">CPU Traffic</span>
-                      <span class="info-box-number">
+                    <div className="info-box-content">
+                      <span className="info-box-text">CPU Traffic</span>
+                      <span className="info-box-number">
                         10
                         <small>%</small>
                       </span>
@@ -124,180 +112,180 @@ function Dashboard() {
                   </div>
                 </div>
 
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box mb-3">
-                    <span class="info-box-icon bg-danger elevation-1">
+                <div className="col-12 col-sm-6 col-md-3">
+                  <div className="info-box mb-3">
+                    <span className="info-box-icon bg-danger elevation-1">
                       <FontAwesomeIcon icon={faThumbsUp} />
                     </span>
-                    <div class="info-box-content">
-                      <span class="info-box-text">Likes</span>
-                      <span class="info-box-number">41,410</span>
+                    <div className="info-box-content">
+                      <span className="info-box-text">Likes</span>
+                      <span className="info-box-number">41,410</span>
                     </div>
                   </div>
                 </div>
 
-                <div class="clearfix hidden-md-up"></div>
+                <div className="clearfix hidden-md-up"></div>
 
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box mb-3">
-                    <span class="info-box-icon bg-success elevation-1">
+                <div className="col-12 col-sm-6 col-md-3">
+                  <div className="info-box mb-3">
+                    <span className="info-box-icon bg-success elevation-1">
                       <FontAwesomeIcon icon={faShoppingCart} />
                     </span>
 
-                    <div class="info-box-content">
-                      <span class="info-box-text">Sales</span>
-                      <span class="info-box-number">760</span>
+                    <div className="info-box-content">
+                      <span className="info-box-text">Sales</span>
+                      <span className="info-box-number">760</span>
                     </div>
                   </div>
                 </div>
 
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box mb-3">
-                    <span class="info-box-icon bg-warning elevation-1">
+                <div className="col-12 col-sm-6 col-md-3">
+                  <div className="info-box mb-3">
+                    <span className="info-box-icon bg-warning elevation-1">
                       <FontAwesomeIcon icon={faUsers} />
                     </span>
 
-                    <div class="info-box-content">
-                      <span class="info-box-text">New Members</span>
-                      <span class="info-box-number">2,000</span>
+                    <div className="info-box-content">
+                      <span className="info-box-text">New Members</span>
+                      <span className="info-box-number">2,000</span>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="row">
-                <div class="col-md-6">
-                  <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title">Latest Members</h3>
+                <div className="col-md-6">
+                  <div className="card">
+                    <div className="card-header">
+                      <h3 className="card-title">Latest Members</h3>
 
-                      <div class="card-tools">
-                        <span class="badge badge-danger">8 New Members</span>
+                      <div className="card-tools">
+                        <span className="badge badge-danger">8 New Members</span>
                         <button
                           type="button"
-                          class="btn btn-tool"
+                          className="btn btn-tool"
                           data-card-widget="collapse"
                         >
-                          <i class="fas fa-minus"></i>
+                          <i className="fas fa-minus"></i>
                         </button>
                         <button
                           type="button"
-                          class="btn btn-tool"
+                          className="btn btn-tool"
                           data-card-widget="remove"
                         >
-                          <i class="fas fa-times"></i>
+                          <i className="fas fa-times"></i>
                         </button>
                       </div>
                     </div>
 
-                    <div class="card-body p-0">
-                      <ul class="users-list clearfix">
+                    <div className="card-body p-0">
+                      <ul className="users-list clearfix">
                         <li>
                           <img src={userprofle} alt="User Image" />
-                          <a class="users-list-name" href="#">
+                          <a className="users-list-name" href="#">
                             Alexander Pierce
                           </a>
-                          <span class="users-list-date">Today</span>
+                          <span className="users-list-date">Today</span>
                         </li>
                         <li>
                           <img src={userprofle} alt="User Image" />
-                          <a class="users-list-name" href="#">
+                          <a className="users-list-name" href="#">
                             Norman
                           </a>
-                          <span class="users-list-date">Yesterday</span>
+                          <span className="users-list-date">Yesterday</span>
                         </li>
                         <li>
                           <img src={userprofle} alt="User Image" />
-                          <a class="users-list-name" href="#">
+                          <a className="users-list-name" href="#">
                             Jane
                           </a>
-                          <span class="users-list-date">12 Jan</span>
+                          <span className="users-list-date">12 Jan</span>
                         </li>
                         <li>
                           <img src={userprofle} alt="User Image" />
-                          <a class="users-list-name" href="#">
+                          <a className="users-list-name" href="#">
                             John
                           </a>
-                          <span class="users-list-date">12 Jan</span>
+                          <span className="users-list-date">12 Jan</span>
                         </li>
                         <li>
                           <img src={userprofle} alt="User Image" />
-                          <a class="users-list-name" href="#">
+                          <a className="users-list-name" href="#">
                             Alexander
                           </a>
-                          <span class="users-list-date">13 Jan</span>
+                          <span className="users-list-date">13 Jan</span>
                         </li>
                         <li>
                           <img src={userprofle} alt="User Image" />
-                          <a class="users-list-name" href="#">
+                          <a className="users-list-name" href="#">
                             Sarah
                           </a>
-                          <span class="users-list-date">14 Jan</span>
+                          <span className="users-list-date">14 Jan</span>
                         </li>
                         <li>
                           <img src={userprofle} alt="User Image" />
-                          <a class="users-list-name" href="#">
+                          <a className="users-list-name" href="#">
                             Nora
                           </a>
-                          <span class="users-list-date">15 Jan</span>
+                          <span className="users-list-date">15 Jan</span>
                         </li>
                         <li>
                           <img src={userprofle} alt="User Image" />
-                          <a class="users-list-name" href="#">
+                          <a className="users-list-name" href="#">
                             Nadia
                           </a>
-                          <span class="users-list-date">15 Jan</span>
+                          <span className="users-list-date">15 Jan</span>
                         </li>
                       </ul>
                     </div>
 
-                    <div class="card-footer text-center">
+                    <div className="card-footer text-center">
                       <a href="javascript:">View All Users</a>
                     </div>
                   </div>
                 </div>
 
-                <div class="col-md-6">
-                  <div class="info-box mb-3 bg-warning">
-                    <span class="info-box-icon">
+                <div className="col-md-6">
+                  <div className="info-box mb-3 bg-warning">
+                    <span className="info-box-icon">
                     <FontAwesomeIcon icon={faShoppingCart} />
                     </span>
 
-                    <div class="info-box-content">
-                      <span class="info-box-text">Inventory</span>
-                      <span class="info-box-number">5,200</span>
+                    <div className="info-box-content">
+                      <span className="info-box-text">Inventory</span>
+                      <span className="info-box-number">5,200</span>
                     </div>
                   </div>
 
-                  <div class="info-box mb-3 bg-success">
-                    <span class="info-box-icon">
+                  <div className="info-box mb-3 bg-success">
+                    <span className="info-box-icon">
                     <FontAwesomeIcon icon={faShoppingCart} />
                     </span>
 
-                    <div class="info-box-content">
-                      <span class="info-box-text">Mentions</span>
-                      <span class="info-box-number">92,050</span>
+                    <div className="info-box-content">
+                      <span className="info-box-text">Mentions</span>
+                      <span className="info-box-number">92,050</span>
                     </div>
                   </div>
 
-                  <div class="info-box mb-3 bg-danger">
-                    <span class="info-box-icon">
+                  <div className="info-box mb-3 bg-danger">
+                    <span className="info-box-icon">
                     <FontAwesomeIcon icon={faShoppingCart} />
                     </span>
 
-                    <div class="info-box-content">
-                      <span class="info-box-text">Downloads</span>
-                      <span class="info-box-number">114,381</span>
+                    <div className="info-box-content">
+                      <span className="info-box-text">Downloads</span>
+                      <span className="info-box-number">114,381</span>
                     </div>
                   </div>
 
-                  <div class="info-box mb-3 bg-info">
-                    <span class="info-box-icon">
+                  <div className="info-box mb-3 bg-info">
+                    <span className="info-box-icon">
                     <FontAwesomeIcon icon={faShoppingCart} />
                     </span>
 
-                    <div class="info-box-content">
-                      <span class="info-box-text">Direct Messages</span>
-                      <span class="info-box-number">163,921</span>
+                    <div className="info-box-content">
+                      <span className="info-box-text">Direct Messages</span>
+                      <span className="info-box-number">163,921</span>
                     </div>
                   </div>
                 </div>

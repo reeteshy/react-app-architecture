@@ -1,51 +1,60 @@
 import React from 'react'
 
-function ShowModel({show, title, children}) {
+function ShowModel(props) {
 
-    const displayProp = show ? "show" : "";
-    const toggleProp = show ? "block" : "none";
+  const { toggleModel, handleToggleModel, modelId, modelById, title, children, showFooter, showHeader } = props;
+  const displayProp = (modelId === modelById && toggleModel) ? "show" : "";
+  const toggleProp =  (modelId === modelById && toggleModel) ? "block" : "none";
 
   return (
-    
-   <>
-    
-   <div
-             className={`modal fade ${displayProp}`}
-             id="modal-default"
-             style={{ display: toggleProp }}
-           >
-             <div className="modal-dialog">
-               <div className="modal-content">
-                 <div className="modal-header">
-                   <h4 className="modal-title">{title}</h4>
-                   <button
-                     type="button"
-                     className="close"
-                     data-dismiss="modal"
-                     aria-label="Close"
-                   >
-                     <span aria-hidden="true">&times;</span>
-                   </button>
-                 </div>
-                 <div className="modal-body">
-                  {children}
-                 </div>
-                 <div className="modal-footer justify-content-between">
-                   <button
-                     type="button"
-                     className="btn btn-default"
-                     data-dismiss="modal"
-                   >
-                     Close
-                   </button>
-                   <button type="button" className="btn btn-primary">
-                     Save changes
-                   </button>
-                 </div>
-               </div>
-             </div>
-             </div>
-  </>
+
+    <>
+
+      <div
+        className={`modal fade ${displayProp}`}
+        id={modelId}
+        style={{ display: toggleProp }}
+      >
+        <div className="modal-dialog modal-xl">
+          <div className="modal-content">
+            { showHeader ?
+              (
+                <div className="modal-header">
+                  <h4 className="modal-title">{title}</h4>
+                  <button
+                    type="button"
+                    className="close"
+                    onClick={()=>handleToggleModel(modelId)}
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>) : null
+            }
+            <div className="modal-body">
+              {children}
+            </div>
+            {
+              showFooter ? (
+                
+            <div className="modal-footer justify-content-between">
+            <button
+              type="button"
+              className="btn btn-default"
+              onClick={()=>handleToggleModel(modelId)}
+            >
+              Close
+            </button>
+            <button type="button" className="btn btn-primary">
+              Save changes
+            </button>
+          </div>
+              ) :
+              null
+            }
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 

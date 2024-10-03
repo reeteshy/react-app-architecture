@@ -1,11 +1,11 @@
 import * as React from "react";
-import { useGetPokemonByNameQuery } from "../services/pokemon";
+import { useGetgetEmrcByNameQuery } from "../services/ermcApi";
 import TableList from "../components/common/TableList";
 import SignIn from "./auth/SignIn";
 
 export default function Pokemon() {
   // Using a query hook automatically fetches data and returns query values
-  const { data, error, isLoading } = useGetPokemonByNameQuery("bulbasaur");
+  const { data, error, isLoading } = useGetgetEmrcByNameQuery("bulbasaur");
   // Individual hooks are also accessible under the generated endpoints:
   // const { data, error, isLoading } = pokemonApi.endpoints.getPokemonByName.useQuery('bulbasaur')
 
