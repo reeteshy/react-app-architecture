@@ -1,1 +1,6 @@
 export { default as Pokemon } from './Pokemon'
+export { default as SignIn } from './auth/SignIn'
+export { default as SignUp } from './auth/SignUp'
+export { default as ServerError } from './admin/500'
+export { default as PageNotFound } from './admin/PageNotFound'
+export { default as Dashboard } from './admin/Dashboard'

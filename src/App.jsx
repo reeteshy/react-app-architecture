@@ -1,21 +1,25 @@
-import * as React from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Copyright from './Copyright';
-import { Pokemon } from './pages/index';
+import { Route, Routes } from "react-router-dom";
+import './App.css'
+import { SignIn, SignUp, Dashboard, PageNotFound, ServerError } from "./pages";
+import Users from "./pages/admin/Users";
+import AllModels from "./pages/admin/AllModels";
+import FormInputs from "./pages/admin/FormInputs";
 
 export default function App() {
 
+
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-          Material UI Vite.js example
-        </Typography>
-        <Pokemon />
-        <Copyright />
-      </Box>
-    </Container>
+    <>
+    <Routes >
+      <Route path={'/'} element={<SignIn />} />
+      <Route path={'/signUp'} element={<SignUp />} />
+      <Route path={'/dashboard'} element={<Dashboard />} />
+      <Route path={'/serverError'} element={<ServerError />} />
+      <Route path={'/datatable'} element={<Users />} />
+      <Route path={'/models'} element={<AllModels />} />
+      <Route path={'/formInput'} element={<FormInputs />} />
+      <Route path={'/*'} element={<PageNotFound />} />
+    </Routes>
+    </>
   );
 }
