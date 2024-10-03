@@ -1,0 +1,8 @@
+.btn-m-5 {
+    margin-right: 5px;
+}
+.modal-body {
+    height: 70vh;
+    overflow-y: auto;
+    overflow-x:unset;
+}
