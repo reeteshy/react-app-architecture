@@ -24,7 +24,7 @@ function RecoverPassword() {
         <div className="card card-outline card-primary">
           <div className="card-header text-center">
             <Link to="/" className="h1">
-              <b>Admin</b>LTE
+            <b>e</b>RMS
             </Link>
           </div>
           <div className="card-body">
@@ -36,7 +36,7 @@ function RecoverPassword() {
                   <input
                     type="password"
                     id="password"
-                    className="form-control"
+                    className={errors.password ? `form-control is-invalid`: `form-control` }
                     placeholder="Password"
                     {...register("password", {
                       required: "Password is required!",
@@ -70,7 +70,7 @@ function RecoverPassword() {
                     type="password"
                     id="confirm_password"
                     name="confirm_password"
-                    className="form-control"
+                    className={errors.confirm_password ? `form-control is-invalid`: `form-control` }
                     placeholder="Retype password"
                     {...register("confirm_password", {
                       required: "Please confirm your password!",

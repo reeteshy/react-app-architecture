@@ -25,7 +25,7 @@ function SignIn() {
           <div className="card card-outline card-primary">
             <div className="card-header text-center">
               <Link to="/" className="h1">
-                <b>Admin</b>LTE
+              <b>e</b>RMS
               </Link>
             </div>
             <div className="card-body">
@@ -35,7 +35,7 @@ function SignIn() {
                 <div className="input-group mb-3">
                   <input
                     type="email"
-                    className="form-control"
+                    className={errors.email ? `form-control is-invalid`: `form-control` }
                     placeholder="Email"
                     {...register("email", {
                       required: "Email id can't be empty!",
@@ -63,7 +63,7 @@ function SignIn() {
                   <input
                     type="password"
                     id="password"
-                    className="form-control"
+                    className={errors.password ? `form-control is-invalid`: `form-control` }
                     placeholder="Password"
                     {...register("password", {
                       required: "Password is required!",

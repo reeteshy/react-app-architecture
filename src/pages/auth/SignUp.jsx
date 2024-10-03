@@ -30,7 +30,7 @@ function SignUp() {
           <div className="card card-outline card-primary">
             <div className="card-header text-center">
               <Link to="/" className="h1">
-                <b>Admin</b>LTE
+                <b>e</b>RMS
               </Link>
             </div>
             <div className="card-body">
@@ -40,7 +40,11 @@ function SignUp() {
                 <div className="input-group mb-3">
                   <input
                     type="text"
-                    className="form-control"
+                    className={
+                      errors.username
+                        ? `form-control is-invalid`
+                        : `form-control`
+                    }
                     placeholder="username"
                     {...register("username", {
                       required: "You must specify the username!",
@@ -68,7 +72,9 @@ function SignUp() {
                 <div className="input-group mb-3">
                   <input
                     type="email"
-                    className="form-control"
+                    className={
+                      errors.email ? `form-control is-invalid` : `form-control`
+                    }
                     placeholder="Email"
                     {...register("email", {
                       required: "Email id can't be empty!",
@@ -96,7 +102,11 @@ function SignUp() {
                   <input
                     type="password"
                     id="password"
-                    className="form-control"
+                    className={
+                      errors.password
+                        ? `form-control is-invalid`
+                        : `form-control`
+                    }
                     placeholder="Password"
                     {...register("password", {
                       required: "Password is required!",
@@ -130,7 +140,11 @@ function SignUp() {
                     type="password"
                     id="confirm_password"
                     name="confirm_password"
-                    className="form-control"
+                    className={
+                      errors.confirm_password
+                        ? `form-control is-invalid`
+                        : `form-control`
+                    }
                     placeholder="Retype password"
                     {...register("confirm_password", {
                       required: "Please confirm your password!",
@@ -160,12 +174,14 @@ function SignUp() {
                         id="agreeTerms"
                         name="terms"
                         value="agree"
-                        className="btn-m-5"
+                        className={`btn-m-5`}
                         {...register("agreeTerms", {
-                          required: "You must check the checkbox!",
+                          required: true,
                         })}
                       />
-                      <label htmlFor="agreeTerms">
+                      <label
+                        htmlFor="agreeTerms"
+                      >
                         I agree to the <Link to="#">terms</Link>
                       </label>
                     </div>
