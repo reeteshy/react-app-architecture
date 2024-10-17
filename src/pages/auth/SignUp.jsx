@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBan, faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useForm } from "react-hook-form";
+import { useRegisterUserMutation } from "../../services/ermcApi";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignUp() {
+
+
+  const [registerUser, { isLoading, isError, error }] =
+    useRegisterUserMutation();
+
+  const [signError, setSignError] = useState(null);
+  const [toggleAlerts, setToggleAlerts] = useState(false)
+
+  
+
+  useEffect(()=>{
+    isError ? setToggleAlerts(true) : null;
+  }, [isError])
+
   let password;
 
   const {
@@ -17,10 +34,36 @@ function SignUp() {
 
   password = watch("password", "");
 
-  const onSubmit = (data) => {
-    console.log("errors ", errors);
-    console.log(data);
-    reset();
+  const onSubmit = async (data) => {
+    try {
+      const { email, password, username } = data;
+      const newObject = {
+        email,
+        password: "test@123",
+        username,
+        role: "ADMIN",
+      };
+      console.log("errors ", errors);
+      const response = await registerUser(newObject).unwrap();
+      toast.success(response?.message, {
+        position: "top-right",
+        autoClose: false,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+      console.log(response);
+      reset();
+    } catch (err) {
+      if (err.status == 409) {
+        setSignError(err.data.messages);
+      }
+      console.error("Failed to register user: ", err);
+    }
   };
 
   return (
@@ -34,6 +77,18 @@ function SignUp() {
               </Link>
             </div>
             <div className="card-body">
+              {toggleAlerts && (
+                <div className="alert alert-danger alert-dismissible">
+                  <button
+                    type="button"
+                    className="close"
+                    onClick={()=>setToggleAlerts(false)}
+                  >
+                    ×
+                  </button>
+                  <FontAwesomeIcon icon={faBan} />{error?.data?.message || "Signup Failed!"}
+                </div>
+              )}
               <p className="login-box-msg">Register a new membership</p>
 
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -115,7 +170,7 @@ function SignUp() {
                         message: "Password must be at least 8 characters!",
                       },
                       pattern: {
-                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+                        value: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$   /,
                         message:
                           "Password must contain at least one uppercase letter, one lowercase letter, and one number!",
                       },
@@ -179,9 +234,7 @@ function SignUp() {
                           required: true,
                         })}
                       />
-                      <label
-                        htmlFor="agreeTerms"
-                      >
+                      <label htmlFor="agreeTerms">
                         I agree to the <Link to="#">terms</Link>
                       </label>
                     </div>
@@ -197,8 +250,12 @@ function SignUp() {
                   </div>
 
                   <div className="col-4">
-                    <button type="submit" className="btn btn-primary btn-block">
-                      Register
+                    <button
+                      type="submit"
+                      className="btn btn-primary btn-block"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? "Registering..." : "Register"}
                     </button>
                   </div>
                 </div>
@@ -222,6 +279,16 @@ function SignUp() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="light"
+      />
     </>
   );
 }

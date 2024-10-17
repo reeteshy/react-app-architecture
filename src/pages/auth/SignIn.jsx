@@ -1,10 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { faBan, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
+import { useLoginMutation } from "../../services/ermcApi";
+import { setCredentials } from "../../services/authSlice";
+import { useDispatch } from "react-redux";
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ErrorAlert from "../admin/components/ErrorAlert";
+
 
 function SignIn() {
+  const [login, { isError, error }] = useLoginMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+
   const {
     register,
     handleSubmit,
@@ -12,10 +24,27 @@ function SignIn() {
     reset,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("errors ", errors);
-    console.log(data);
-    reset();
+  const onSubmit = async (data) => {
+    try {
+      const userData = await login(data).unwrap();
+      console.log("Function called", userData)
+      dispatch(setCredentials(userData?.data));
+      toast.success(userData?.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+      navigate('/dashboard');
+      reset();
+    } catch (err) {
+      console.error("Failed to login:", err);
+    }
   };
 
   return (
@@ -25,24 +54,25 @@ function SignIn() {
           <div className="card card-outline card-primary">
             <div className="card-header text-center">
               <Link to="/" className="h1">
-              <b>e</b>RMS
+                <b>e</b>RMS
               </Link>
             </div>
             <div className="card-body">
+              {isError && (
+                <ErrorAlert isError={isError} error={error} />
+              )}
               <p className="login-box-msg">Sign in to start your session</p>
 
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="input-group mb-3">
                   <input
-                    type="email"
-                    className={errors.email ? `form-control is-invalid`: `form-control` }
-                    placeholder="Email"
-                    {...register("email", {
-                      required: "Email id can't be empty!",
-                      pattern: {
-                        value: /\S+@\S+\.\S+/,
-                        message: "Entered value does not match email format!",
-                      },
+                    type="text"
+                    className={
+                      errors.email ? `form-control is-invalid` : `form-control`
+                    }
+                    placeholder="User Name"
+                    {...register("username", {
+                      required: "UserName can't be empty!",
                     })}
                   />
                   <div className="input-group-append">
@@ -50,12 +80,12 @@ function SignIn() {
                       <FontAwesomeIcon icon={faEnvelope} />
                     </div>
                   </div>
-                  {errors.email && (
+                  {errors.username && (
                     <span
                       id="exampleInputEmail1-error"
                       className="error invalid-feedback"
                     >
-                      {errors.email.message}
+                      {errors.username.message}
                     </span>
                   )}
                 </div>
@@ -63,7 +93,11 @@ function SignIn() {
                   <input
                     type="password"
                     id="password"
-                    className={errors.password ? `form-control is-invalid`: `form-control` }
+                    className={
+                      errors.password
+                        ? `form-control is-invalid`
+                        : `form-control`
+                    }
                     placeholder="Password"
                     {...register("password", {
                       required: "Password is required!",
@@ -71,12 +105,8 @@ function SignIn() {
                         value: 8,
                         message: "Password must be at least 8 characters!",
                       },
-                      pattern: {
-                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-                        message:
-                          "Password must contain at least one uppercase letter, one lowercase letter, and one number!",
-                      },
                     })}
+                     autoComplete="on"
                   />
                   <div className="input-group-append">
                     <div className="input-group-text">
@@ -133,6 +163,19 @@ function SignIn() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition:Bounce
+      />
     </>
   );
 }

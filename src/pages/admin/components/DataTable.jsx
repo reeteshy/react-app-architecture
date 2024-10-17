@@ -31,28 +31,6 @@ function DataTable(props) {
 
   return (
     <>
-      <div className="content-wrapper">
-        <section className="content-header">
-          <div className="container-fluid">
-            <div className="row mb-2">
-              <div className="col-sm-6">
-                <h1>Blank Page</h1>
-              </div>
-              <div className="col-sm-6">
-                <ol className="breadcrumb float-sm-right">
-                  <li className="breadcrumb-item">
-                    <a>Home</a>
-                  </li>
-                  <li className="breadcrumb-item active">DataTable</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="content">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-12">
                 <div className="card">
                   <div className="card-header">
                     <h3 className="card-title">
@@ -76,11 +54,12 @@ function DataTable(props) {
                     >
                       <thead>
                         <tr>
-                          <th>Rendering engine</th>
-                          <th>Browser</th>
-                          <th>Platform(s)</th>
-                          <th>Engine version</th>
-                          <th>CSS grade</th>
+                          <th>First name</th>
+                          <th>Last name</th>
+                          <th>Email</th>
+                          <th>Gender</th>
+                          <th>Role</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -89,6 +68,7 @@ function DataTable(props) {
                             <tr>
                               <td>{user?.firstName}</td>
                               <td>{user?.lastName}</td>
+                              <td>{user?.email}</td>
                               <td>{user?.gender}</td>
                               <td>
                                 {" "}
@@ -96,7 +76,6 @@ function DataTable(props) {
                                   {user?.gender}
                                 </span>
                               </td>
-                              <td>{user?.email}</td>
                               <td>
                                 <button
                                   className="btn btn-primary btn-sm btn-m-5"
@@ -152,9 +131,6 @@ function DataTable(props) {
                     </ul>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
 
           <ShowModel
             toggleModel={toggleModel}
@@ -191,8 +167,6 @@ function DataTable(props) {
           >
             <DetailsInfo />
           </ShowModel>
-        </section>
-      </div>
 
       <ToastContainer
         position="top-right"

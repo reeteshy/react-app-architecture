@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { faTachometerAlt } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import userLogo from '../../../assets/img/eRMC.png'
-import userprofle from '../../../assets/img/user2-160x160.jpg'
+import { faTachometerAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import userLogo from "../../../assets/img/eRMC.png";
+import userprofle from "../../../assets/img/user2-160x160.jpg";
 
 function AsideBar() {
-
-  const [activeMenu, setActiveMenu] = useState()
+  const [activeMenu, setActiveMenu] = useState();
 
   return (
     <>
@@ -44,36 +43,52 @@ function AsideBar() {
               role="menu"
               data-accordion="false"
             >
-              <li className="nav-item menu-open" onClick={()=>setActiveMenu()}>
+              <li
+                className="nav-item menu-open"
+                onClick={() => setActiveMenu()}
+              >
                 <Link to="/dashboard" className={`nav-link ${activeMenu}`}>
-                <FontAwesomeIcon className="nav-icon" icon={faTachometerAlt} />
-                  <p>
-                    Dashboard
-                  </p>
+                  <FontAwesomeIcon
+                    className="nav-icon"
+                    icon={faTachometerAlt}
+                  />
+                  <p>Dashboard</p>
                 </Link>
               </li>
               <li className="nav-item menu-open">
                 <Link to="/datatable" className="nav-link">
-                <FontAwesomeIcon className="nav-icon" icon={faTachometerAlt} />
-                  <p>
-                    DataTable
-                  </p>
+                  <FontAwesomeIcon
+                    className="nav-icon"
+                    icon={faTachometerAlt}
+                  />
+                  <p>DataTable</p>
                 </Link>
               </li>
-              {/* <li className="nav-item menu-open">
-                <Link to="/add-new" className="nav-link">
-                <FontAwesomeIcon className="nav-icon" icon={faTachometerAlt} />
-                  <p>
-                    Form Inputs
-                  </p>
+              <li className="nav-item menu-open">
+                <Link to="/categories" className="nav-link">
+                  <FontAwesomeIcon
+                    className="nav-icon"
+                    icon={faTachometerAlt}
+                  />
+                  <p>Manage Categories</p>
                 </Link>
-              </li> */}
+              </li>
+              <li className="nav-item menu-open">
+                <Link to="/products" className="nav-link">
+                  <FontAwesomeIcon
+                    className="nav-icon"
+                    icon={faTachometerAlt}
+                  />
+                  <p>Manage products</p>
+                </Link>
+              </li>
               <li className="nav-item menu-open">
                 <Link to="/my-profile" className="nav-link">
-                <FontAwesomeIcon className="nav-icon" icon={faTachometerAlt} />
-                  <p>
-                    My Profile
-                  </p>
+                  <FontAwesomeIcon
+                    className="nav-icon"
+                    icon={faTachometerAlt}
+                  />
+                  <p>My Profile</p>
                 </Link>
               </li>
             </ul>

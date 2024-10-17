@@ -1,26 +1,32 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faCog, faRightFromBracket, faSearch, faTimes, faUser } from "@fortawesome/free-solid-svg-icons";
-
+import {
+  faBars,
+  faCog,
+  faSearch,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { MainContext } from "../../../utils/MainContextProvider";
+import AppLogout from "../components/AppLogout";
 
 function TopHeader() {
-
   const { status, handleSideMenuToggle } = useContext(MainContext);
-  const [toggleSearch, setToggleSearch] = useState('navbar-search-block')
-  const [toggleDropdown, setToggleDropdown] = useState(false)
+  const [toggleSearch, setToggleSearch] = useState("navbar-search-block");
+  const [toggleDropdown, setToggleDropdown] = useState(false);
 
-  const profileSettingDropdown = toggleDropdown ? 'show' : null;
-
+  const profileSettingDropdown = toggleDropdown ? "show" : null;
 
   return (
     <>
       <nav className="main-header navbar navbar-expand navbar-white navbar-light">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link className="nav-link" onClick={() => handleSideMenuToggle(!status)}>
+            <Link
+              className="nav-link"
+              onClick={() => handleSideMenuToggle(!status)}
+            >
               <FontAwesomeIcon icon={faBars} />
             </Link>
           </li>
@@ -41,7 +47,9 @@ function TopHeader() {
             <Link
               className="nav-link"
               role="button"
-              onClick={() => setToggleSearch('navbar-search-block navbar-search-open')}
+              onClick={() =>
+                setToggleSearch("navbar-search-block navbar-search-open")
+              }
             >
               <FontAwesomeIcon icon={faSearch} />
             </Link>
@@ -61,7 +69,7 @@ function TopHeader() {
                     <button
                       className="btn btn-navbar"
                       type="button"
-                      onClick={() => setToggleSearch('navbar-search-block')}
+                      onClick={() => setToggleSearch("navbar-search-block")}
                     >
                       <FontAwesomeIcon icon={faTimes} />
                     </button>
@@ -70,16 +78,29 @@ function TopHeader() {
               </form>
             </div>
           </li>
-            <li className="nav-item dropdown show">
-              <a className="nav-link dropdown-toggle" onClick={() => setToggleDropdown(!toggleDropdown)} >My Profile</a>
-              <ul class={`dropdown-menu border-0 shadow ${profileSettingDropdown}`} >
-                <li><a className="dropdown-item"> <Link className="nav-link btn-m-5">
-                  Settings <FontAwesomeIcon icon={faCog} />
-                </Link> </a></li>
-                <li><a className="dropdown-item"> <Link className="nav-link btn-m-5">
-                  Logout <FontAwesomeIcon icon={faRightFromBracket} />
-                </Link></a></li>
-              </ul>
+          <li className="nav-item dropdown show">
+            <a
+              className="nav-link dropdown-toggle"
+              onClick={() => setToggleDropdown(!toggleDropdown)}
+            >
+              My Account
+            </a>
+            <ul
+              class={`dropdown-menu border-0 shadow ${profileSettingDropdown}`}
+            >
+              <li>
+                <a className="dropdown-item">
+                  <Link className="nav-link btn-m-5">
+                    My Profile <FontAwesomeIcon icon={faCog} />
+                  </Link>
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item">
+                  <AppLogout />
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
